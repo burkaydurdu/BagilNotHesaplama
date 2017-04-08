@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">BagilNotHesaplama</string>
+    <string name="app_name">RelativeNoteCalculation</string>
+    <string name="midterm_">Midterm</string>
+    <string name="final_">Final</string>
+    <string name="average">Class Average</string>
+    <string name="standard_deviation">Standard Deviation</string>
+    <string name="calculate">Calculate</string>
+    <string name="check_input">Enter values into the box</string>
 </resources>

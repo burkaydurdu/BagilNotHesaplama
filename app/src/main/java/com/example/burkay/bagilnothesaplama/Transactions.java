@@ -1,9 +1,12 @@
 package com.example.burkay.bagilnothesaplama;
 
 public class Transactions {
-
     public static float T_Note(int midterm_, int final_, float Hsb_average, float Hsb_standart) {
-        return ((((midterm_ + final_) / 2) - Hsb_average) / Hsb_standart);
+        return ((((float) (midterm_ + final_) / 2) - Hsb_average) / Hsb_standart) * 10 + 50;
+    }
+
+    private static int InverseConversion(int midterm, float Hsb_average, float Hsb_standart, float T_note){
+        return (int) (-midterm + ( 2 * Hsb_average ) - ( 10 * Hsb_standart ) + ( (T_note * Hsb_standart) / 5 ));
     }
 
     public static ClassLevel ClassLev(float Hsb_average) {
@@ -25,191 +28,112 @@ public class Transactions {
         else
             return ClassLevel.level1;
     }
+
     private static LetterNote Absolute_assessment(float T_note) {
 
-        if (T_note <= 100 && T_note >= 90)
-            return LetterNote.AA;
-        else if (T_note < 90 && T_note >= 80)
-            return LetterNote.BA;
-        else if (T_note < 80 && T_note >= 75)
-            return LetterNote.BB;
-        else if (T_note < 75 && T_note >= 70)
-            return LetterNote.CB;
-        else if (T_note < 70 && T_note >= 60)
-            return LetterNote.CC;
-        else if (T_note < 60 && T_note >= 50)
-            return LetterNote.DC;
-        else if (T_note < 50 && T_note >= 40)
-            return LetterNote.DD;
-        else if (T_note < 40 && T_note >= 30)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
+        int [] rep = {90, 80, 75, 70, 60, 50, 40, 30};
+        for(int count = 0; count < rep.length; count++){
+            if(T_note >= rep[count])
+                return Rift(count);
+        }
+        return LetterNote.FF;
     }
-    public static LetterNote LetterNot_30B(ClassLevel level, float T_note) {
 
-        if (level == ClassLevel.level8)
-            return Absolute_assessment(T_note);
-        else if (level == ClassLevel.level7)
-            return ClassLev7(T_note);
-        else if (level == ClassLevel.level6)
-            return ClassLev6(T_note);
-        else if (level == ClassLevel.level5)
-            return ClassLev5(T_note);
-        else if (level == ClassLevel.level4)
-            return ClassLev4(T_note);
-        else if (level == ClassLevel.level3)
-            return ClassLev3(T_note);
-        else if (level == ClassLevel.level2)
-            return ClassLev2(T_note);
-        else
-            return ClassLev1(T_note);
+    public static LetterNote LetterNot_30B(ClassLevel level, float T_note, float average_Note) {
+
+        switch (level) {
+            case level8:
+                return Absolute_assessment(average_Note);
+            case level7:
+                return FoundLetter(59, T_note);
+            case level6:
+                return FoundLetter(61, T_note);
+            case level5:
+                return FoundLetter(63, T_note);
+            case level4:
+                return FoundLetter(65, T_note);
+            case level3:
+                return FoundLetter(67, T_note);
+            case level2:
+                return FoundLetter(69, T_note);
+            default:
+                return FoundLetter(71, T_note);
+        }
+
     }
-    private static LetterNote ClassLev7(float T_note) {
 
-        if (T_note >= 59)
-            return LetterNote.AA;
-        else if (T_note < 59 && T_note >= 54)
-            return LetterNote.BA;
-        else if (T_note < 54 && T_note >= 49)
-            return LetterNote.BB;
-        else if (T_note < 49 && T_note >= 44)
-            return LetterNote.CB;
-        else if (T_note < 44 && T_note >= 39)
-            return LetterNote.CC;
-        else if (T_note < 39 && T_note >= 34)
-            return LetterNote.DC;
-        else if (T_note < 34 && T_note >= 29)
-            return LetterNote.DD;
-        else if (T_note < 29 && T_note >= 24)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
+    private static LetterNote FoundLetter(int headCount, float T_note) {
+        int cycle = 0;
+        for (int count = headCount; count > 0; count -= 5) {
+            if (T_note >= count)
+                return Rift(cycle);
+            cycle++;
+        }
+        return LetterNote.FF;
     }
-    private static LetterNote ClassLev6(float T_note) {
 
-        if (T_note >= 61)
-            return LetterNote.AA;
-        else if (T_note < 61 && T_note >= 56)
-            return LetterNote.BA;
-        else if (T_note < 56 && T_note >= 51)
-            return LetterNote.BB;
-        else if (T_note < 51 && T_note >= 46)
-            return LetterNote.CB;
-        else if (T_note < 46 && T_note >= 41)
-            return LetterNote.CC;
-        else if (T_note < 41 && T_note >= 36)
-            return LetterNote.DC;
-        else if (T_note < 36 && T_note >= 31)
-            return LetterNote.DD;
-        else if (T_note < 31 && T_note >= 26)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
+    private static LetterNote Rift(int cycle) {
+        switch (cycle) {
+            case 0:
+                return LetterNote.AA;
+            case 1:
+                return LetterNote.BA;
+            case 2:
+                return LetterNote.BB;
+            case 3:
+                return LetterNote.CB;
+            case 4:
+                return LetterNote.CC;
+            case 5:
+                return LetterNote.DC;
+            case 6:
+                return LetterNote.DD;
+            case 7:
+                return LetterNote.FD;
+            default:
+                return LetterNote.FF;
+        }
     }
-    private static LetterNote ClassLev5(float T_note) {
 
-        if (T_note >= 63)
-            return LetterNote.AA;
-        else if (T_note < 63 && T_note >= 58)
-            return LetterNote.BA;
-        else if (T_note < 58 && T_note >= 53)
-            return LetterNote.BB;
-        else if (T_note < 53 && T_note >= 48)
-            return LetterNote.CB;
-        else if (T_note < 48 && T_note >= 43)
-            return LetterNote.CC;
-        else if (T_note < 43 && T_note >= 38)
-            return LetterNote.DC;
-        else if (T_note < 38 && T_note >= 33)
-            return LetterNote.DD;
-        else if (T_note < 33 && T_note >= 28)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
+    public static int [] Recommendations(ClassLevel level, int midterm, float Hsb_average, float Hsb_standart){
+
+        switch (level) {
+            case level8:
+                return Re_funct_Abso(midterm);
+            case level7:
+                return Re_funct(59, midterm, Hsb_average, Hsb_standart);
+            case level6:
+                return Re_funct(61, midterm, Hsb_average, Hsb_standart);
+            case level5:
+                return Re_funct(63, midterm, Hsb_average, Hsb_standart);
+            case level4:
+                return Re_funct(65, midterm, Hsb_average, Hsb_standart);
+            case level3:
+                return Re_funct(67, midterm, Hsb_average, Hsb_standart);
+            case level2:
+                return Re_funct(69, midterm, Hsb_average, Hsb_standart);
+            default:
+                return Re_funct(71, midterm, Hsb_average, Hsb_standart);
+        }
     }
-    private static LetterNote ClassLev4(float T_note) {
 
-        if (T_note >= 65)
-            return LetterNote.AA;
-        else if (T_note < 65 && T_note >= 60)
-            return LetterNote.BA;
-        else if (T_note < 60 && T_note >= 55)
-            return LetterNote.BB;
-        else if (T_note < 55 && T_note >= 50)
-            return LetterNote.CB;
-        else if (T_note < 50 && T_note >= 45)
-            return LetterNote.CC;
-        else if (T_note < 45 && T_note >= 40)
-            return LetterNote.DC;
-        else if (T_note < 40 && T_note >= 35)
-            return LetterNote.DD;
-        else if (T_note < 35 && T_note >= 30)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
+    private static int [] Re_funct(int headCount,int midterm, float Hsb_average, float Hsb_standart){
+        int [] arrayObj = new  int[6];
+        int cycle = 0;
+        for (int count = headCount; count > (headCount-30); count -= 5) {
+            arrayObj[cycle] = InverseConversion(midterm, Hsb_average, Hsb_standart, count);
+            cycle++;
+        }
+        return arrayObj;
     }
-    private static LetterNote ClassLev3(float T_note) {
 
-        if (T_note >= 67)
-            return LetterNote.AA;
-        else if (T_note < 67 && T_note >= 62)
-            return LetterNote.BA;
-        else if (T_note < 62 && T_note >= 57)
-            return LetterNote.BB;
-        else if (T_note < 57 && T_note >= 52)
-            return LetterNote.CB;
-        else if (T_note < 52 && T_note >= 47)
-            return LetterNote.CC;
-        else if (T_note < 47 && T_note >= 42)
-            return LetterNote.DC;
-        else if (T_note < 42 && T_note >= 37)
-            return LetterNote.DD;
-        else if (T_note < 37 && T_note >= 32)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
-    }
-    private static LetterNote ClassLev2(float T_note) {
+    private static int [] Re_funct_Abso(int midterm){
 
-        if (T_note >= 69)
-            return LetterNote.AA;
-        else if (T_note < 69 && T_note >= 64)
-            return LetterNote.BA;
-        else if (T_note < 64 && T_note >= 59)
-            return LetterNote.BB;
-        else if (T_note < 59 && T_note >= 54)
-            return LetterNote.CB;
-        else if (T_note < 54 && T_note >= 49)
-            return LetterNote.CC;
-        else if (T_note < 49 && T_note >= 44)
-            return LetterNote.DC;
-        else if (T_note < 44 && T_note >= 39)
-            return LetterNote.DD;
-        else if (T_note < 39 && T_note >= 34)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
-    }
-    private static LetterNote ClassLev1(float T_note) {
+        int [] rep = {90, 80, 75, 70, 60, 50};
+        for(int count = 0; count < rep.length; count++){
+            rep[count] = 2 * rep[count] - midterm;
+        }
+        return rep;
 
-        if (T_note >= 71)
-            return LetterNote.AA;
-        else if (T_note < 71 && T_note >= 66)
-            return LetterNote.BA;
-        else if (T_note < 66 && T_note >= 61)
-            return LetterNote.BB;
-        else if (T_note < 61 && T_note >= 56)
-            return LetterNote.CB;
-        else if (T_note < 56 && T_note >= 51)
-            return LetterNote.CC;
-        else if (T_note < 51 && T_note >= 46)
-            return LetterNote.DC;
-        else if (T_note < 46 && T_note >= 41)
-            return LetterNote.DD;
-        else if (T_note < 41 && T_note >= 36)
-            return LetterNote.FD;
-        else
-            return LetterNote.FF;
     }
 }

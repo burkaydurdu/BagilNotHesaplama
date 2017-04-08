@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BagilNotHesaplama</string>
+    <string name="midterm_">Vize</string>
+    <string name="final_">Final</string>
+    <string name="average">Sinif Ortalama</string>
+    <string name="standard_deviation">Standart Sapma</string>
+    <string name="calculate">Hesapla</string>
+    <string name="check_input">Kutu içine değerleri gir</string>
+</resources>
