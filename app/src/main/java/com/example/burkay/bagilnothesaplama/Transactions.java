@@ -1,6 +1,9 @@
 package com.example.burkay.bagilnothesaplama;
 
 public class Transactions {
+    private static ClassLevel [] levels = {ClassLevel.level8, ClassLevel.level7, ClassLevel.level6,
+            ClassLevel.level5, ClassLevel.level4, ClassLevel.level3, ClassLevel.level2, ClassLevel.level1};
+
     public static float T_Note(int midterm_, int final_, float Hsb_average, float Hsb_standart) {
         return ((((float) (midterm_ + final_) / 2) - Hsb_average) / Hsb_standart) * 10 + 50;
     }
@@ -11,22 +14,11 @@ public class Transactions {
 
     public static ClassLevel ClassLev(float Hsb_average) {
 
-        if (Hsb_average <= 100 && Hsb_average >= 80)
-            return ClassLevel.level8;
-        else if (Hsb_average < 80 && Hsb_average >= 70)
-            return ClassLevel.level7;
-        else if (Hsb_average < 70 && Hsb_average >= 62.5)
-            return ClassLevel.level6;
-        else if (Hsb_average < 62.5 && Hsb_average >= 57.5)
-            return ClassLevel.level5;
-        else if (Hsb_average < 57.5 && Hsb_average >= 52.5)
-            return ClassLevel.level4;
-        else if (Hsb_average < 52.5 && Hsb_average >= 47.5)
-            return ClassLevel.level3;
-        else if (Hsb_average < 47.5 && Hsb_average >= 42.5)
-            return ClassLevel.level2;
-        else
-            return ClassLevel.level1;
+        double[] rep = { 80.0, 70.0, 62.5, 57.5, 52.5, 47.5, 42.5};
+        for(int count = 0; count < rep.length; count++)
+            if(Hsb_average >= rep[count])
+                return levels[count];
+        return levels[levels.length-1];
     }
 
     private static LetterNote Absolute_assessment(float T_note) {
@@ -41,31 +33,23 @@ public class Transactions {
 
     public static LetterNote LetterNot_30B(ClassLevel level, float T_note, float average_Note) {
 
-        switch (level) {
-            case level8:
-                return Absolute_assessment(average_Note);
-            case level7:
-                return FoundLetter(59, T_note);
-            case level6:
-                return FoundLetter(61, T_note);
-            case level5:
-                return FoundLetter(63, T_note);
-            case level4:
-                return FoundLetter(65, T_note);
-            case level3:
-                return FoundLetter(67, T_note);
-            case level2:
-                return FoundLetter(69, T_note);
-            default:
-                return FoundLetter(71, T_note);
+        if(level == ClassLevel.level8){
+            return Absolute_assessment(average_Note);
         }
-
+        else {
+            int[] rep = {59, 61, 63, 65, 67, 69, 71};
+            for (int count = 0; count < rep.length; count++) {
+                if (levels[count + 1] == level)
+                    return FoundLetter(rep[count],T_note);
+            }
+            return LetterNote.FF;
+        }
     }
 
     private static LetterNote FoundLetter(int headCount, float T_note) {
         int cycle = 0;
         for (int count = headCount; count > 0; count -= 5) {
-            if (T_note >= count)
+            if ((int)T_note >= count)
                 return Rift(cycle);
             cycle++;
         }
