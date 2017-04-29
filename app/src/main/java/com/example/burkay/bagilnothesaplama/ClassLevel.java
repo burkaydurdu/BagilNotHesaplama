@@ -1,23 +1,23 @@
 package com.example.burkay.bagilnothesaplama;
 
-
 public enum ClassLevel {
 
-    level8("Ustun Basari"),
-    level7("Mukemmel"),
-    level6("Cok iyi"),
-    level5("Iyi"),
-    level4("Ortalama ustu"),
-    level3("Orta"),
-    level2("Zayif"),
-    level1("Kotu");
+    level8(R.string.success),
+    level7(R.string.perfect),
+    level6(R.string.verygood),
+    level5(R.string.good),
+    level4(R.string.aboveaverage),
+    level3(R.string.intermediate),
+    level2(R.string.low),
+    level1(R.string.bad);
 
-    private String description;
-
-    ClassLevel(String description){
+    private int description;
+    ClassLevel(int description){
         this.description = description;
     }
-    public String Description(){
+    public int Description(){
         return this.description;
     }
+
+
 }

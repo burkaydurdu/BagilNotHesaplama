@@ -7,4 +7,12 @@
     <string name="standard_deviation">Standart Sapma</string>
     <string name="calculate">Hesapla</string>
     <string name="check_input">Kutu içine değerleri gir</string>
+    <string name="success">Üstün Başarı</string>
+    <string name="perfect">Mükemmel</string>
+    <string name="verygood">Çok İyi</string>
+    <string name="good">İyi</string>
+    <string name="aboveaverage">Ortalama Üstü</string>
+    <string name="intermediate">Orta</string>
+    <string name="low">Zayıf</string>
+    <string name="bad">Kötü</string>
 </resources>

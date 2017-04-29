@@ -6,4 +6,12 @@
     <string name="standard_deviation">Standard Deviation</string>
     <string name="calculate">Calculate</string>
     <string name="check_input">Enter values into the box</string>
+    <string name="success">High success</string>
+    <string name="perfect">Perfect</string>
+    <string name="verygood">Very Good</string>
+    <string name="good">Good</string>
+    <string name="aboveaverage">Above Average</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="low">Low</string>
+    <string name="bad">Bad</string>
 </resources>

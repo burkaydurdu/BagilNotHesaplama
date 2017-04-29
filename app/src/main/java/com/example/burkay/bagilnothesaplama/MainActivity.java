@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText midterm_txt, final_txt, hsb_average_txt, hsb_standart_txt;
     private TextView aa_txt, ba_txt, bb_txt, cb_txt, cc_txt, dc_txt;
     private TextView result_screen;
-    private Button result_Button;
+    private Button result_Button, clear_Button;
     private static int FINAL_ANGER = 45;
 
     @Override
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         hsb_standart_txt = (EditText) findViewById(R.id.standard);
         result_screen = (TextView) findViewById(R.id.result_screen);
         result_Button = (Button) findViewById(R.id.result_btn);
+        clear_Button = (Button) findViewById(R.id.clear_btn);
 
         aa_txt = (TextView) findViewById(R.id.aa_txt);
         ba_txt = (TextView) findViewById(R.id.ba_txt);
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        clear_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                midterm_txt.setText("");
+                final_txt.setText("");
+                hsb_average_txt.setText("");
+                hsb_standart_txt.setText("");
+            }
+        });
     }
 
     public void gettingValue(){
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         decimalFormat.setMaximumFractionDigits(2);
         String T = decimalFormat.format(T_note);
         ClassLevel level =  Transactions.ClassLev(Hsb_average);
-        String classLevel = level.Description();
+        String classLevel = getResources().getString(level.Description());
 
         if(FINAL_ANGER <= final_)
             note= Transactions.LetterNot_30B(level, T_note,(float) (midterm_+final_)/2);
@@ -78,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
         String letterNote = note.Description();
         int recom [] = Transactions.Recommendations(level, midterm_, Hsb_average, Hsb_standart);
-        aa_txt.setText(String.valueOf(recom[0]));
-        ba_txt.setText(String.valueOf(recom[1]));
-        bb_txt.setText(String.valueOf(recom[2]));
-        cb_txt.setText(String.valueOf(recom[3]));
-        cc_txt.setText(String.valueOf(recom[4]));
-        dc_txt.setText(String.valueOf(recom[5]));
+        aa_txt.setText(recom[0]<45? "X":String.valueOf(recom[0]));
+        ba_txt.setText(recom[1]<45? "X":String.valueOf(recom[1]));
+        bb_txt.setText(recom[2]<45? "X":String.valueOf(recom[2]));
+        cb_txt.setText(recom[3]<45? "X":String.valueOf(recom[3]));
+        cc_txt.setText(recom[4]<45? "X":String.valueOf(recom[4]));
+        dc_txt.setText(recom[5]<45? "X":String.valueOf(recom[5]));
         result_screen.setText("T : "+T +"Class level : " + classLevel + "  Letter Note : " + letterNote);
     }
 

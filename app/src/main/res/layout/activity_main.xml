@@ -95,8 +95,7 @@
         android:id="@+id/result_btn"
         android:layout_below="@+id/general"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/colorPrimary"
-        android:background="@drawable/ic_input_black_24dp"/>
+        android:backgroundTint="@color/colorPrimary" />
 
 
     <TextView

@@ -90,15 +90,34 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/result_btn"
-        android:layout_below="@+id/general"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/colorPrimary"
-        android:background="@drawable/ic_input_black_24dp"/>
+        android:layout_below="@+id/general">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/result_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_check_24dp"
+                android:backgroundTint="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/clear_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_clear_24dp"
+                android:backgroundTint="@color/colorPrimary" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -110,43 +129,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="9pt"
-        android:id="@+id/table_layout"
-        >
+        android:layout_marginBottom="0pt"
+        android:id="@+id/table_layout">
 
         <LinearLayout>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="AA"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="BA"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="BB"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
         </LinearLayout>
 
@@ -154,35 +175,38 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/aa_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/ba_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/bb_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
         </LinearLayout>
 
@@ -190,35 +214,39 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="CB"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="CC"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue_darken_4"
+
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="DC"
-                    style="@style/Base.V7.Widget.AppCompat.AutoCompleteTextView"/>
+                    style="@style/TabletitleText"/>
             </TableRow>
         </LinearLayout>
 
@@ -226,35 +254,38 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cb_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cc_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_green_darken_1"
                 android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/dc_txt"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"/>
+                    style="@style/TableContentText"/>
             </TableRow>
         </LinearLayout>
     </TableLayout>
