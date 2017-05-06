@@ -15,4 +15,8 @@
     <string name="intermediate">Orta</string>
     <string name="low">Zayıf</string>
     <string name="bad">Kötü</string>
+    <string name="assessment">Değerlendirme</string>
+    <string name="classlevel">Sınıf Düzeyi</string>
+    <string name="note">Geçme Notu</string>
+    <string name="changed">Başarıyla Değiştirildi</string>
 </resources>

@@ -14,4 +14,8 @@
     <string name="intermediate">Intermediate</string>
     <string name="low">Low</string>
     <string name="bad">Bad</string>
+    <string name="assessment">Assessment</string>
+    <string name="classlevel">Class Level</string>
+    <string name="note">Pass Note</string>
+    <string name="changed">Changed Successfully</string>
 </resources>

@@ -22,7 +22,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:background">@color/light_blue_darken_4</item>
+        <item name="android:background">@color/cyan_darken_3</item>
     </style>
 
     <style name="TableContentText">
@@ -33,6 +33,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:background">@color/light_green_darken_1</item>
+        <item name="android:background">@color/cyan_darken_2</item>
     </style>
 </resources>

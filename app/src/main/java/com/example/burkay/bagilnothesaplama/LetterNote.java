@@ -2,15 +2,15 @@ package com.example.burkay.bagilnothesaplama;
 
 
 public enum LetterNote {
-    AA("AA"),
-    BA("BA"),
-    BB("BB"),
-    CB("CB"),
-    CC("CC"),
+    AA("aa"),
+    BA("ba"),
+    BB("bb"),
+    CB("cb"),
+    CC("cc"),
     DC("DC"),
     DD("DD"),
     FD("FD"),
-    FF("FF");
+    FF("ff");
     private String description;
 
     LetterNote(String description){
