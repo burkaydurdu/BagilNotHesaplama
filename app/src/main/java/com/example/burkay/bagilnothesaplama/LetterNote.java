@@ -7,9 +7,9 @@ public enum LetterNote {
     BB("bb"),
     CB("cb"),
     CC("cc"),
-    DC("DC"),
-    DD("DD"),
-    FD("FD"),
+    DC("dc"),
+    DD("dd"),
+    FD("fd"),
     FF("ff");
     private String description;
 

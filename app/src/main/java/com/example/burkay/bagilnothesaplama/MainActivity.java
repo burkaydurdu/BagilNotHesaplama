@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.transition.Transition;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<String> arrayInformation = new ArrayList<>();
     private int FINAL_ANGER;
     private HashMap<String,Integer> image;
+    private TextView[] noteText;
     private Save saveNote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +72,11 @@ public class MainActivity extends AppCompatActivity
         image.put("bb",R.drawable.bb);
         image.put("cb",R.drawable.cb);
         image.put("cc",R.drawable.cc);
+        image.put("dc",R.drawable.dc);
         image.put("ff",R.drawable.ff);
 
+        TextView[] note = {aa_txt,ba_txt,bb_txt,cb_txt,cc_txt,dc_txt};
+        noteText = note;
         hsb_standart_txt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -91,12 +96,13 @@ public class MainActivity extends AppCompatActivity
         clear_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                midterm_txt.setFocusable(true);
                 midterm_txt.setText("");
                 final_txt.setText("");
                 hsb_average_txt.setText("");
                 hsb_standart_txt.setText("");
                 arrayInformation.clear();
-                imageLogo.setImageResource(R.drawable.ktu_logo);
+                logoSet();
             }
         });
     }
@@ -133,19 +139,49 @@ public class MainActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+    private void logoSet(){
+        imageLogo.setImageResource(R.drawable.ktu_logo);
+    }
 
     public void resultFunction(){
 
-        if(!isEmpty(midterm_txt) && !isEmpty(final_txt) && !isEmpty(hsb_average_txt) && !isEmpty(hsb_standart_txt)) {
-
+        if(!isEmpty(midterm_txt)  && !isEmpty(hsb_average_txt)) {
             midterm_ = Integer.parseInt(midterm_txt.getText().toString());
-            final_ = Integer.parseInt(final_txt.getText().toString());
             Hsb_average = Float.parseFloat(hsb_average_txt.getText().toString());
-            Hsb_standart = Float.parseFloat(hsb_standart_txt.getText().toString());
-            gettingValue();
+            if(!isEmpty(final_txt)) {
+                final_ = Integer.parseInt(final_txt.getText().toString());
+                if (final_>100 || final_<0) {
+                    Toast.makeText(getApplicationContext(), R.string.control, Toast.LENGTH_LONG).show();
+                    logoSet();
+                    return;
+                }
+            }
+            if(midterm_>100 || midterm_<0 || Hsb_average>100 || Hsb_average<0){
+                Toast.makeText(getApplicationContext(), R.string.control, Toast.LENGTH_LONG).show();
+                logoSet();
+                return;
+            }
+            if(Hsb_average < 80) {
+                if (isEmpty(hsb_standart_txt)) {
+                    Toast.makeText(getApplicationContext(), R.string.check_input, Toast.LENGTH_LONG).show();
+                    logoSet();
+                }
+                else {
+                    Hsb_standart = Float.parseFloat(hsb_standart_txt.getText().toString());
+                    if(Hsb_standart>100 || Hsb_standart<0) {
+                        Toast.makeText(getApplicationContext(), R.string.control, Toast.LENGTH_LONG).show();
+                        logoSet();
+                        return;
+                    }
+                    gettingValue();
+                }
+            }
+            else
+                gettingValue();
         }
         else{
             Toast.makeText(getApplicationContext(), R.string.check_input, Toast.LENGTH_LONG).show();
+            logoSet();
         }
     }
 
@@ -166,31 +202,46 @@ public class MainActivity extends AppCompatActivity
     public void gettingValue(){
         DecimalFormat decimalFormat = new DecimalFormat();
         LetterNote note = null;
-        float T_note = Transactions.T_Note(midterm_, final_ ,Hsb_average, Hsb_standart);
+        double T_note = Transactions.T_Note(midterm_, final_ ,Hsb_average, Hsb_standart);
         decimalFormat.setMaximumFractionDigits(2);
         String T = decimalFormat.format(T_note);
         ClassLevel level =  Transactions.ClassLev(Hsb_average);
         String classLevel = getResources().getString(Transactions.ClassLev(Hsb_average).Description());
 
-        if(FINAL_ANGER <= final_)
-            note= Transactions.LetterNot_30B(level, T_note,(float) (midterm_+final_)/2);
-        else
-            note = LetterNote.FF;
+        if(!isEmpty(final_txt)) {
+            if (FINAL_ANGER <= final_) {
+                if (Hsb_average >= 80)
+                    note = Transactions.Absolute_Assessment((midterm_ + final_) / 2);
+                else
+                    note = Transactions.LetterNote(level, T_note);
+            } else
+                note = LetterNote.FF;
 
-        String letterNote = note.Description();
+            String letterNote = note.Description();
+            Bitmap icon = BitmapFactory.decodeResource(this.getResources(), image.get(letterNote));
+            imageLogo.setImageBitmap(icon);
+        }
+        else
+            logoSet();
+
         int recom [] = Transactions.Recommendations(level, midterm_, Hsb_average, Hsb_standart);
-        aa_txt.setText(recom[0]>99 || recom[0] < FINAL_ANGER ? "X":String.valueOf(recom[0]));
-        ba_txt.setText(recom[0]>99 || recom[1] < FINAL_ANGER ? "X":String.valueOf(recom[1]));
-        bb_txt.setText(recom[0]>99 || recom[2] < FINAL_ANGER ? "X":String.valueOf(recom[2]));
-        cb_txt.setText(recom[0]>99 || recom[3] < FINAL_ANGER ? "X":String.valueOf(recom[3]));
-        cc_txt.setText(recom[0]>99 || recom[4] < FINAL_ANGER ? "X":String.valueOf(recom[4]));
-        dc_txt.setText(recom[5] < FINAL_ANGER ? "X":String.valueOf(recom[5]));
+        for(int count = 0; count < 6; count++)
+        {
+            if(recom[count] > 100) {
+                noteText[count].setText("X");
+            }
+            else if (recom[count] < FINAL_ANGER) {
+                if (count != 0 && recom[count - 1] > FINAL_ANGER)
+                    noteText[count].setText(String.valueOf(FINAL_ANGER));
+                else
+                    noteText[count].setText("X");
+            }
+            else
+                noteText[count].setText(String.valueOf(recom[count]));
+        }
         arrayInformation.add(0,T);
         arrayInformation.add(1,classLevel);
-        arrayInformation.add(2,letterNote);
 
-        Bitmap icon = BitmapFactory.decodeResource(this.getResources(),image.get(letterNote));
-        imageLogo.setImageBitmap(icon);
     }
 
     public boolean isEmpty(EditText editText)

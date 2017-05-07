@@ -19,4 +19,8 @@
     <string name="classlevel">Sınıf Düzeyi</string>
     <string name="note">Geçme Notu</string>
     <string name="changed">Başarıyla Değiştirildi</string>
+    <string name="control">Değerleri Kontrol edin!</string>
+    <string name="tableHeader1">Final/Bütünleme</string>
+    <string name="tableHeader2">Alınması Gereken Notlar</string>
+
 </resources>

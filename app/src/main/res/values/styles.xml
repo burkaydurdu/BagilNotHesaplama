@@ -16,23 +16,33 @@
     
     <style name="TabletitleText">
         <item name="android:gravity">center</item>
-        <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">serif-monospace</item>
-        <item name="android:textSize">28dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">2dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@color/cyan_darken_3</item>
     </style>
 
     <style name="TableContentText">
         <item name="android:gravity">center</item>
-        <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">serif-monospace</item>
-        <item name="android:textSize">28dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@color/cyan_darken_2</item>
+    </style>
+
+    <style name="tableHeaderStyle">
+        <item name="android:background">@color/cyan_darken_2</item>
+    </style>
+
+    <style name="tableHeaderTextStyle">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>
