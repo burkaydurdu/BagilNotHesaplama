@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity
         image.put("cb",R.drawable.cb);
         image.put("cc",R.drawable.cc);
         image.put("dc",R.drawable.dc);
+        image.put("dd",R.drawable.dd);
+        image.put("fd",R.drawable.fd);
         image.put("ff",R.drawable.ff);
 
         TextView[] note = {aa_txt,ba_txt,bb_txt,cb_txt,cc_txt,dc_txt};
