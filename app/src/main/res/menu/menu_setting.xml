@@ -12,4 +12,18 @@
         android:title="@string/assessment"
         app:showAsAction="withText">
     </item>
+
+    <item
+        android:id="@+id/level"
+        android:title="@string/level_title"
+        app:showAsAction="withText">
+    </item>
+
+    <item
+        android:id="@+id/helper"
+        android:title="@string/helper_title"
+        app:showAsAction="withText">
+    </item>
+
+
 </menu>

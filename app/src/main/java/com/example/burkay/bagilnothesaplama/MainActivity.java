@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity
         cb_txt = (TextView) findViewById(R.id.cb_txt);
         cc_txt = (TextView) findViewById(R.id.cc_txt);
         dc_txt = (TextView) findViewById(R.id.dc_txt);
-        result_screen_txt = (TextView) findViewById(R.id.result_screen);
 
         saveNote = new Save(this);
         FINAL_ANGER = saveNote.getNote();
@@ -108,6 +107,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+    public String getStrings(int res){
+        return getResources().getString(res);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -134,6 +136,21 @@ public class MainActivity extends AppCompatActivity
                             Toast.makeText(getApplicationContext(),R.string.changed,Toast.LENGTH_SHORT).show();
                         }
                     })
+                    .show();
+        }
+        else if(id == R.id.helper){
+            new MaterialDialog.Builder(this)
+                    .title(R.string.helper_title)
+                    .items(getStrings(R.string.helper1),getStrings(R.string.helper2),getStrings(R.string.helper3),
+                            getStrings(R.string.helper4),getStrings(R.string.helper5),getStrings(R.string.helper6),getStrings(R.string.helper7))
+                    .show();
+        }
+        else if(id == R.id.level){
+            new MaterialDialog.Builder(this)
+                    .title(R.string.level_title)
+                    .items(getStrings(R.string.level1),getStrings(R.string.level2),getStrings(R.string.level3),
+                            getStrings(R.string.level4),getStrings(R.string.level5),getStrings(R.string.level6),
+                            getStrings(R.string.level7),getStrings(R.string.level8),getStrings(R.string.level9))
                     .show();
         }
         else if(id == R.id.assessment){
@@ -170,7 +187,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 else {
                     Hsb_standart = Float.parseFloat(hsb_standart_txt.getText().toString());
-                    if(Hsb_standart>100 || Hsb_standart<0) {
+                    if(Hsb_standart>30 || Hsb_standart<0) {
                         Toast.makeText(getApplicationContext(), R.string.control, Toast.LENGTH_LONG).show();
                         logoSet();
                         return;

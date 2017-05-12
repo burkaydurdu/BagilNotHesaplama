@@ -21,4 +21,23 @@
     <string name="control">Check value</string>
     <string name="tableHeader1">Final/Integrated</string>
     <string name="tableHeader2">Notes to be taken</string>
+    <string name="helper_title">Help</string>
+    <string name="level_title">Level</string>
+    <string name="helpe1"></string>
+    <string name="helpe2"></string>
+    <string name="helpe3"></string>
+    <string name="helpe4"></string>
+    <string name="helpe5"></string>
+    <string name="helpe6"></string>
+    <string name="helpe7"></string>
+    <string name="level1">AA == 4.0</string>
+    <string name="level2">BA == 3.5</string>
+    <string name="level3">BB == 3.0</string>
+    <string name="level4">CB == 2.5</string>
+    <string name="level5">CC == 2.0</string>
+    <string name="level6">DC == 1.5</string>
+    <string name="level7">DD == 1.0</string>
+    <string name="level8">FD == 0.5</string>
+    <string name="level9">FF == 0</string>
+
 </resources>

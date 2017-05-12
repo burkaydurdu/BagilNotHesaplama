@@ -22,5 +22,15 @@
     <string name="control">Değerleri Kontrol edin!</string>
     <string name="tableHeader1">Final/Bütünleme</string>
     <string name="tableHeader2">Alınması Gereken Notlar</string>
+    <string name="helper_title">Yardım</string>
+    <string name="level_title">Seviye</string>
+    <string name="helper1">1-)Final notu girme zorunluluğu yoktur. Final notunu girmez isen harf notu gösterilmez.</string>
+    <string name="helper2">2-)Sınıf ortalaması 80 ve üzerinde ise Tablo 3 de belirtilen mutlak değerlendirme sistemi kullanılmaktadır.</string>
+    <string name="helper3">3-)Sınıf ortalaması 80 ve üzerinde iste standart sapma bilgisi gerekli değildir.</string>
+    <string name="helper4">4-)Final yada Bütünleme sınavında alınması gereken notlar bölümünde en az alınması gereken not gösterilmektedir.</string>
+    <string name="helper5">5-)"X" işareti ile gösterilen alanlar geçme notunun altında kalan değerlerdir.</string>
+    <string name="helper6">6-)Menü de geçme notunu güncellene bilmektedir. Eğer değiştirilmemiş ise 45" olarak setlenmiştir.</string>
+    <string name="helper7">7-)Değerlendirme bölümünde sınıf seviyesi ve T notu gösterilmektedir.</string>
+
 
 </resources>
